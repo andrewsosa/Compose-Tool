@@ -3,8 +3,8 @@ import fs from 'fs'
 
 import chalk from 'chalk'
 
-import config from './config'
-import {DEFAULT_DIR} from 'util/_globals'
+import config from './util/config'
+import {DEFAULT_DIR} from './util/_globals'
 
 export function getActiveConf (dir) {
     const conf = config(dir)
