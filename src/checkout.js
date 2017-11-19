@@ -6,6 +6,7 @@ import chalk from 'chalk'
 
 import {getActiveConf, setActiveConf} from './active'
 import {DEFAULT_DIR} from './util/_globals'
+import preventOverwrite from './util/overwrite'
 
 
 // tug checkout [-f] <name>
@@ -30,11 +31,7 @@ export default function (name, options) {
     }
 
     // Don't overwrite unless told
-    if (fs.existsSync(dest) && !(options.force || options.writeBack)) {
-        let msg = `Can't overwrite existing docker-compose.yml (use -f to force or -w to write back)`
-        console.log(chalk.yellow(msg))
-        process.exit(1)
-    }
+    preventOverwrite('docker-compose.yml', options);
 
     // Write back the config to storage
     if (options.writeBack) {
