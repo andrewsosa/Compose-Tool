@@ -19,7 +19,7 @@ export default function (name, options) {
     }
 
     // Validate target config exists
-    if (!fs.existsSync(target)) {
+    if (!fs.existsSync(target) || !isValid(target)) {
         let msg = `Target config ${name} does not exist`
         console.log(chalk.red(msg))
         process.exit(1)
