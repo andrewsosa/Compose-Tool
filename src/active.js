@@ -4,6 +4,7 @@ import fs from 'fs'
 import chalk from 'chalk'
 
 import config from './config'
+import {DEFAULT_DIR} from './_globals'
 
 export function getActiveConf (dir) {
     const conf = config(dir)
@@ -29,7 +30,7 @@ export function setActiveConf(dir, name) {
 
 // tug active
 export default function (options) {
-    let dir = options.dir || '.docker'
+    let dir = options.dir || DEFAULT_DIR
     let active = getActiveConf(dir)
 
 

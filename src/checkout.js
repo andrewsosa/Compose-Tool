@@ -5,12 +5,13 @@ import isValid from 'is-valid-path'
 import chalk from 'chalk'
 
 import {getActiveConf, setActiveConf} from './active'
+import {DEFAULT_DIR} from './_globals'
 
 
 // tug checkout [-f] <name>
 export default function (name, options) {
     let cwd = process.cwd()
-    let dir = options.dir || '.docker'
+    let dir = options.dir || DEFAULT_DIR
 
     // Make sure we have our file ending
     if (!name.endsWith('.yml')) {
