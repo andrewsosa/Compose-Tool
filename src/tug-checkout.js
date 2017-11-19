@@ -1,10 +1,8 @@
-#!/usr/bin/env node
+import path from 'path'
+import fs from 'fs'
 
-import path from "path"
-import fs from "fs"
-
-import isValid from "is-valid-path"
-import chalk from "chalk"
+import isValid from 'is-valid-path'
+import chalk from 'chalk'
 
 
 // tug checkout [-f] <name>
@@ -27,7 +25,7 @@ export default function (name, options) {
         process.exit(1)
     }
 
-    // Don't overwrite unless told
+    // Don"t overwrite unless told
     if (fs.existsSync(dest) && !options.force) {
         let msg = `Can't overwrite existing docker-compose.yml (use -f to force!)`
         console.log(chalk.yellow(msg))

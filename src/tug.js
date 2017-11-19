@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 
-import app from "commander"
+import app from 'commander'
 
-import checkout from "./tug-checkout"
+import checkout from './tug-checkout'
 
 app.version('0.1.0')
     .description('Docker Compose configuration management tool')
