@@ -5,7 +5,7 @@ import isValid from 'is-valid-path'
 import chalk from 'chalk'
 
 import {getActiveConf, setActiveConf} from './active'
-import {DEFAULT_DIR} from './_globals'
+import {DEFAULT_DIR} from 'util/_globals'
 
 
 // tug checkout [-f] <name>

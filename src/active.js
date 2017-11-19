@@ -4,7 +4,7 @@ import fs from 'fs'
 import chalk from 'chalk'
 
 import config from './config'
-import {DEFAULT_DIR} from './_globals'
+import {DEFAULT_DIR} from 'util/_globals'
 
 export function getActiveConf (dir) {
     const conf = config(dir)
