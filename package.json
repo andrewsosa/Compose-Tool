@@ -1,0 +1,9 @@
+{
+  "name": "compose-tool",
+  "version": "0.0.1",
+  "description": "Docker Compose configuration management tool.",
+  "main": "index.js",
+  "repository": "git@github.com:andrewsosa/Compose-Tool.git",
+  "author": "Andrew Sosa <andrewsosa001@gmail.com>",
+  "license": "Copyright Andrew Sosa, 2017"
+}
