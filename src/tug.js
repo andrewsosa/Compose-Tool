@@ -6,6 +6,7 @@ import active from './active'
 import checkout from './checkout'
 import create from './create'
 import list from './list'
+import save from './save'
 
 app.version('0.1.0')
     .description('Docker Compose configuration management tool')
@@ -31,5 +32,10 @@ app.command('create <name>')
 app.command('ls')
     .description('List available Compose configurations')
     .action(list)
+
+app.command('save -f <name>')
+    .description('Save the current configuration as <name>')
+    .option('-f, --force', 'Force overwrite if name already exists.')
+    .action(save)
 
 app.parse(process.argv)
