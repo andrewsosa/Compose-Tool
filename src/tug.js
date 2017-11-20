@@ -27,4 +27,8 @@ app.command('create <name>')
     .option('-w, --write-back', 'Write active configuration back to config storage')
     .action(create)
 
+app.command('ls')
+    .description('List available Compose configurations')
+    .action(list)
+
 app.parse(process.argv)
