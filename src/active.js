@@ -1,8 +1,3 @@
-import path from 'path'
-import fs from 'fs'
-
-import chalk from 'chalk'
-
 import config from './util/config'
 import {DEFAULT_DIR} from './util/_globals'
 
@@ -33,6 +28,10 @@ export default function (options) {
     let dir = options.dir || DEFAULT_DIR
     let active = getActiveConf(dir)
 
+    if (options.unset !== undefined) {
+        setActiveConf(dir, undefined)
+        return
+    }
 
     if (active === undefined) {
         let msg = 'No active configuration found'

@@ -13,6 +13,7 @@ app.version('0.1.0')
 
 app.command('active')
     .description('Print the active Compose configuration')
+    .option('-u, --unset', 'Unset the active Compose configuration')
     .action(active)
 
 app.command('checkout <name>')
