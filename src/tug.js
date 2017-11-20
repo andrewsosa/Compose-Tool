@@ -2,9 +2,10 @@
 
 import app from 'commander'
 
-import checkout from './checkout'
 import active from './active'
+import checkout from './checkout'
 import create from './create'
+import list from './list'
 
 app.version('0.1.0')
     .description('Docker Compose configuration management tool')
