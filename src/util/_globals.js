@@ -1,1 +1,1 @@
-export const DEFAULT_DIR = '.docker'
+export const DEFAULT_DIR = '.docker';

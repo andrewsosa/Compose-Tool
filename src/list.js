@@ -1,20 +1,18 @@
-import path from 'path'
-import fs from 'fs'
+import path from 'path';
+import fs from 'fs';
 
-import {DEFAULT_DIR} from './util/_globals'
+import { DEFAULT_DIR } from './util/_globals';
 
 
 // tug ls
 export default function (options) {
-    let dir = options.dir || DEFAULT_DIR
-    let target = path.join(process.cwd(), dir)
+  const dir = options.dir || DEFAULT_DIR;
+  const target = path.join(process.cwd(), dir);
 
-    fs.readdir(target, function(err, items) {
-        for (var i=0; i<items.length; i++) {
-            let name = items[i]
-            if (name.endsWith('.yml')) console.log(name)
-
-        }
-    })
-
+  fs.readdir(target, (err, items) => {
+    for (let i = 0; i < items.length; i++) {
+      const name = items[i];
+      if (name.endsWith('.yml')) console.log(name);
+    }
+  });
 }
