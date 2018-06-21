@@ -10,7 +10,7 @@ export default function (options) {
   const target = path.join(process.cwd(), dir);
 
   fs.readdir(target, (err, items) => {
-    for (let i = 0; i < items.length; i++) {
+    for (let i = 0; i < items.length; i += 1) {
       const name = items[i];
       if (name.endsWith('.yml')) console.log(name);
     }
