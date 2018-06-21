@@ -12,6 +12,11 @@ export default function (name, options) {
     let cwd = process.cwd()
     let dir = options.dir || DEFAULT_DIR
 
+    // Make sure dir exists
+    if (!fs.existsSync(path.join(cwd, dir))) {
+        fs.mkdirSync(path.join(cwd, dir))
+    }
+	
     // Make sure we have our file ending
     if (!name.endsWith('.yml')) {
         name += '.yml'
