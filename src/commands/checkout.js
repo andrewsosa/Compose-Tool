@@ -1,12 +1,12 @@
-import path from 'path';
-import fs from 'fs';
-
-import isValid from 'is-valid-path';
 import chalk from 'chalk';
+import fs from 'fs';
+import isValid from 'is-valid-path';
+import path from 'path';
+
+import { DEFAULT_DIR } from '../util/_globals';
+import preventOverwrite from '../util/overwrite';
 
 import { getActiveConf, setActiveConf } from './active';
-import { DEFAULT_DIR } from './util/_globals';
-import preventOverwrite from './util/overwrite';
 
 
 // tug checkout [-f] <name>

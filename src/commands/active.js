@@ -1,5 +1,5 @@
-import config from './util/config';
-import { DEFAULT_DIR } from './util/_globals';
+import config from '../util/config';
+import { DEFAULT_DIR } from '../util/_globals';
 
 export function getActiveConf(dir) {
   const conf = config(dir);

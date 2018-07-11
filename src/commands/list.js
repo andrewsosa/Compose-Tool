@@ -1,7 +1,7 @@
 import path from 'path';
 import fs from 'fs';
 
-import { DEFAULT_DIR } from './util/_globals';
+import { DEFAULT_DIR } from '../util/_globals';
 
 
 // tug ls

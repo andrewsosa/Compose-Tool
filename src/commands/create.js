@@ -1,11 +1,11 @@
-import path from 'path';
-import fs from 'fs';
-
 import chalk from 'chalk';
+import fs from 'fs';
+import path from 'path';
 
-import { DEFAULT_DIR } from './util/_globals';
+import { DEFAULT_DIR } from '../util/_globals';
+import preventOverwrite from '../util/overwrite';
+
 import { getActiveConf, setActiveConf } from './active';
-import preventOverwrite from './util/overwrite';
 import checkout from './checkout';
 
 export default function (name, options) {

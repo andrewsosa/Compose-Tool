@@ -4,8 +4,8 @@ import fs from 'fs';
 import isValid from 'is-valid-path';
 import chalk from 'chalk';
 
-import { DEFAULT_DIR } from './util/_globals';
-import preventOverwrite from './util/overwrite';
+import { DEFAULT_DIR } from '../util/_globals';
+import preventOverwrite from '../util/overwrite';
 
 
 // tug save [-f] <name>
