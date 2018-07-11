@@ -22,7 +22,9 @@
   },
   "dependencies": {
     "chalk": "^2.3.0",
+    "inquirer": "^6.0.0",
     "is-valid-path": "^0.1.1",
-    "nconf": "^0.9.1"
+    "nconf": "^0.9.1",
+    "shelljs": "^0.8.2"
   }
 }
