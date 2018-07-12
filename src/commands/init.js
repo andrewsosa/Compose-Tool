@@ -27,11 +27,19 @@ export default async function init(options) {
     return;
   }
 
-  //
+
+  // Collect init config
   const conf = await inquirer.prompt(INIT_QUESTIONS);
 
+  // Do the things
   mkdir(conf.directory);
 
+  config().set('directory', conf.directory);
+  config().set('active', conf.active);
 
-
+  // Save the file
+  // Object.keys(conf).forEach((key) => {
+  //   console.log(key, conf[key]);
+  //   config().set(key, conf[key]);
+  // });
 }

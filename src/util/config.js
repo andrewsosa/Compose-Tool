@@ -3,7 +3,8 @@ import nconf from 'nconf';
 
 //
 export default function (dir) {
-  const confPath = path.join(process.cwd(), '.tugrc.json');
+  const confDir = dir || process.cwd();
+  const confPath = path.join(confDir, '.tugrc.json');
 
   nconf.file({ file: confPath });
 
@@ -13,9 +14,7 @@ export default function (dir) {
     },
     set(key, value) {
       nconf.set(key, value);
-      nconf.save(((err) => {
-        if (err) console.log(err);
-      }));
+      nconf.save();
     },
     unset(key) {
       this.set(key, undefined);
