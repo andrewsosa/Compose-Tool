@@ -15,6 +15,7 @@ app.version('0.1.0')
 
 app.command('init')
   .description('Initialize Tug')
+  .option('-f, --force', 'Force reinitialization')
   .action(init);
 
 app.command('active')

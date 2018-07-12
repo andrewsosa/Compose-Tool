@@ -12,8 +12,11 @@ export const keys = {
 // Default values
 export const defaults = {
   DEFAULT_DIR: '.docker',
-  DEFAULT_CONF_DIR: process.cwd()
+  DEFAULT_CONF_DIR: process.cwd(),
+  CONFIG_FILE_NAME: 'docker-compose.yml'
 };
+
+export const COMPOSE_FILENAME = defaults.CONFIG_FILE_NAME;
 
 // Configuration API
 export default function (dir) {
