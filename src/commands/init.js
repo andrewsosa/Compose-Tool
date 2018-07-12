@@ -1,6 +1,6 @@
 import inquirer from 'inquirer';
 
-import config, { defaults } from '../util/config';
+import config, { keys, defaults } from '../util/config';
 import { mkdir, exists } from '../util/fs';
 import { warn } from '../util/log';
 
@@ -33,6 +33,6 @@ export default async function init(options) {
   // Do the things
   mkdir(conf.directory);
 
-  config().set('directory', conf.directory);
-  config().set('active', conf.active);
+  config().set(keys.dir, conf.directory);
+  config().set(keys.active, conf.active);
 }

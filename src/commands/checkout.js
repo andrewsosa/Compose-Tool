@@ -1,18 +1,20 @@
-import chalk from 'chalk';
-import fs from 'fs';
-import isValid from 'is-valid-path';
 import path from 'path';
 
-import { DEFAULT_DIR } from '../util/_globals';
-import preventOverwrite from '../util/overwrite';
-
+import * as _fs from '../util/fs';
+import config, { keys } from '../util/config';
 import { getActiveConf, setActiveConf } from './active';
+import { success, error } from '../util/log';
 
 
-// tug checkout [-f] <name>
+/**
+ *               switch
+ * -b <name>     branch new conf @name
+ * -f <name>     force switch even if overwriting
+ * -w <name>     switch to conf @name with writeback
+ */
 export default function (name, options) {
   const cwd = process.cwd();
-  const dir = options.dir || DEFAULT_DIR;
+  const dir = config().get(keys.dir);
 
   let fileName = name;
 
@@ -23,30 +25,30 @@ export default function (name, options) {
 
   // Setup target and dest paths
   const target = path.join(cwd, dir, fileName);
-  const dest = path.join(cwd, 'docker-compose.yml');
+  const active = path.join(cwd, 'docker-compose.yml');
 
   // Validate target config exists
-  if (!fs.existsSync(target) || !isValid(target)) {
-    const msg = `Target config ${fileName} does not exist`;
-    console.log(chalk.red(msg));
+  if (!_fs.exists(target)) {
+    error(`Target config ${fileName} does not exist`);
     process.exit(1);
   }
 
-  // Don't overwrite unless told
-  preventOverwrite('docker-compose.yml', options);
-
   // Write back the config to storage
   if (options.writeBack) {
-    const writeback = path.join(cwd, dir, getActiveConf(dir));
-    const active = path.join(cwd, 'docker-compose.yml');
-    fs.copyFileSync(active, writeback);
+    const writeback = path.join(cwd, dir, getActiveConf());
+    _fs.move(active, writeback, { overwrite: true });
   }
 
-  // Move new config
-  fs.copyFile(target, dest, (err) => {
-    if (err) throw err;
-    const msg = `Switched to ${fileName}`;
-    setActiveConf(dir, fileName);
-    console.log(chalk.green(msg));
-  });
+  // Copy in new config
+  _fs.copy(target, active);
+  setActiveConf(fileName);
+  success(`Switched to ${fileName}`);
+
+  // // Move new config
+  // fs.copyFile(target, dest, (err) => {
+  //   if (err) throw err;
+  //   const msg = ;
+  //   setActiveConf(dir, fileName);
+  //   console.log(chalk.green(msg));
+  // });
 }

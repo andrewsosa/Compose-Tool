@@ -3,6 +3,12 @@ import nconf from 'nconf';
 
 import { exists } from './fs';
 
+// Config keys
+export const keys = {
+  active: 'active',
+  dir: 'directory'
+}
+
 // Default values
 export const defaults = {
   DEFAULT_DIR: '.docker',
