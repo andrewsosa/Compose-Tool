@@ -1,5 +1,6 @@
 import inquirer from 'inquirer';
 
+import config from '../util/config';
 import { mkdir, exists } from '../util/fs';
 import { warn } from '../util/log';
 
@@ -11,7 +12,7 @@ const INIT_QUESTIONS = [
     default: '.docker',
   },
   {
-    name: 'init_name',
+    name: 'active',
     type: 'input',
     message: 'What should we call the active config?',
     default: 'master',
@@ -29,6 +30,8 @@ export default async function init(options) {
   //
   const conf = await inquirer.prompt(INIT_QUESTIONS);
 
-  console.log('hi');
-  // console.log(mkdir(conf.directory));
+  mkdir(conf.directory);
+
+
+
 }
