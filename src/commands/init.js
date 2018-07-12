@@ -1,31 +1,34 @@
 import inquirer from 'inquirer';
 
-import { exists } from '../util/fs';
+import { mkdir, exists } from '../util/fs';
+import { warn } from '../util/log';
 
-export default function init (options) {
+const INIT_QUESTIONS = [
+  {
+    name: 'directory',
+    type: 'input',
+    message: 'Where would you like to keep your Compose configs?',
+    default: '.docker',
+  },
+  {
+    name: 'init_name',
+    type: 'input',
+    message: 'What should we call the active config?',
+    default: 'master',
+    when: exists('docker-compose.yml'),
+  },
+];
 
-    // Don't double init
-    if (exists('.tugrc.json')) {
-        
-    }
+export default async function init(options) {
+  // Don't double init
+  if (exists('.tugrc.json')) {
+    warn('.tugrc.json already exists.');
+    return;
+  }
 
-    const questions = [
-        {
-            name: "DIRECTORY",
-            type: "input",
-            message: "Where would you like to keep your Compose configs?",
-            default: ".docker"
-        },
-        {
-            name: "INIT_NAME",
-            type: "input",
-            message: "What should we call the active config?",
-            default: "master",
-            when: exists('docker-compose.yml')
-        }
-    ]
+  //
+  const conf = await inquirer.prompt(INIT_QUESTIONS);
 
-    const { DIRECTORY, INIT_NAME } = inquirer.prompt(questions);
-
-
+  console.log('hi');
+  // console.log(mkdir(conf.directory));
 }

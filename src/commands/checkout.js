@@ -50,4 +50,3 @@ export default function (name, options) {
     console.log(chalk.green(msg));
   });
 }
-

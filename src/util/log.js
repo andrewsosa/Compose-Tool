@@ -7,14 +7,14 @@ import chalk from 'chalk';
 //         }
 // }
 
-export function success (msg) {
-    console.log(chalk.green(msg));
+export function success(msg) {
+  console.log(chalk.green(msg));
 }
 
-export function warn (msg) {
-    console.log(chalk.yellow(msg));
+export function warn(msg) {
+  console.log(chalk.yellow(msg));
 }
 
-export function error (msg) {
-    console.log(chalk.red(msg));
+export function error(msg) {
+  console.log(chalk.red(msg));
 }

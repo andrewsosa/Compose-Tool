@@ -6,22 +6,27 @@
   "repository": "git@github.com:andrewsosa/Compose-Tool.git",
   "author": "Andrew Sosa <andrewsosa001@gmail.com>",
   "scripts": {
-    "build": "babel src -d dist"
+    "dev": "nodemon -x 'yarn build' -w src",
+    "build": "babel src -d dist",
+    "lint": "eslint src/"
   },
   "bin": {
     "tug": "./dist/tug.js"
   },
-  "license": "Copyright Andrew Sosa, 2017",
+  "license": "",
   "devDependencies": {
     "babel-cli": "^6.26.0",
-    "babel-preset-env": "^1.6.1",
+    "babel-core": "^6.0.20",
+    "babel-preset-env": "^1.7.0",
     "eslint": "^4.19.1",
     "eslint-config-airbnb": "^16.1.0",
-    "eslint-config-airbnb-base": "^12.1.0",
-    "eslint-plugin-import": "^2.12.0"
+    "eslint-config-airbnb-base": "^13.0.0",
+    "eslint-plugin-import": "^2.12.0",
+    "nodemon": "^1.18.1"
   },
   "dependencies": {
     "chalk": "^2.3.0",
+    "commander": "^2.16.0",
     "inquirer": "^6.0.0",
     "is-valid-path": "^0.1.1",
     "nconf": "^0.9.1",
