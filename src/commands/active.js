@@ -1,8 +1,8 @@
 import config from '../util/config';
-import { DEFAULT_DIR } from '../util/_globals';
+import { warn } from '../util/log';
 
 export function getActiveConf(dir) {
-  const conf = config(dir);
+  const conf = config();
   const active = conf.get('active');
   // let file = path.join(process.cwd(), dir, active)
 
@@ -19,14 +19,13 @@ export function getActiveConf(dir) {
 }
 
 export function setActiveConf(dir, name) {
-  const conf = config(dir);
+  const conf = config();
   conf.set('active', name);
 }
 
 // tug active
 export default function (options) {
-  const dir = options.dir || DEFAULT_DIR;
-  const active = getActiveConf(dir);
+  const active = getActiveConf();
 
   if (options.unset !== undefined) {
     setActiveConf(dir, undefined);
@@ -34,8 +33,7 @@ export default function (options) {
   }
 
   if (active === undefined) {
-    const msg = 'No active configuration found';
-    console.log(msg);
+    warn('No active configuration found');
   } else {
     console.log(active);
   }

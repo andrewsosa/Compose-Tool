@@ -1,6 +1,6 @@
 import inquirer from 'inquirer';
 
-import config from '../util/config';
+import config, { defaults } from '../util/config';
 import { mkdir, exists } from '../util/fs';
 import { warn } from '../util/log';
 
@@ -9,7 +9,7 @@ const INIT_QUESTIONS = [
     name: 'directory',
     type: 'input',
     message: 'Where would you like to keep your Compose configs?',
-    default: '.docker',
+    default: defaults.DEFAULT_DIR,
   },
   {
     name: 'active',
@@ -22,11 +22,10 @@ const INIT_QUESTIONS = [
 
 export default async function init(options) {
   // Don't double init
-  if (exists('.tugrc.json')) {
+  if (config().exists()) {
     warn('.tugrc.json already exists.');
     return;
   }
-
 
   // Collect init config
   const conf = await inquirer.prompt(INIT_QUESTIONS);
@@ -36,10 +35,4 @@ export default async function init(options) {
 
   config().set('directory', conf.directory);
   config().set('active', conf.active);
-
-  // Save the file
-  // Object.keys(conf).forEach((key) => {
-  //   console.log(key, conf[key]);
-  //   config().set(key, conf[key]);
-  // });
 }

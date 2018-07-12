@@ -1,9 +1,17 @@
 import path from 'path';
 import nconf from 'nconf';
 
-//
+import { exists } from './fs';
+
+// Default values
+export const defaults = {
+  DEFAULT_DIR: '.docker',
+  DEFAULT_CONF_DIR: process.cwd()
+};
+
+// Configuration API
 export default function (dir) {
-  const confDir = dir || process.cwd();
+  const confDir = dir || defaults.DEFAULT_CONF_DIR;
   const confPath = path.join(confDir, '.tugrc.json');
 
   nconf.file({ file: confPath });
@@ -19,5 +27,8 @@ export default function (dir) {
     unset(key) {
       this.set(key, undefined);
     },
+    exists() {
+      return exists(confPath);
+    }
   };
 }

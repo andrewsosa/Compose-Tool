@@ -2,13 +2,13 @@ import chalk from 'chalk';
 import fs from 'fs';
 import path from 'path';
 
-import { DEFAULT_DIR } from '../util/_globals';
+import { defaults } from '../util/config';
 import preventOverwrite from '../util/overwrite';
 
 import { getActiveConf, setActiveConf } from './active';
 import checkout from './checkout';
 
-export default function (name, options) {
+export default function create(name, options) {
   const cwd = process.cwd();
   const dir = options.dir || DEFAULT_DIR;
 
