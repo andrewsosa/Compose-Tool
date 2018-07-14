@@ -2,25 +2,11 @@ import config from '../util/config';
 import { warn } from '../util/log';
 
 export function getActive() {
-  const conf = config();
-  const active = conf.get('active');
-  // let file = path.join(process.cwd(), dir, active)
-
-  // if (!fs.existsSync(file)) {
-  //     conf.unset(active)
-
-  //     let msg = `Supposedly active config ${active} not found.`
-  //     console.log(chalk.red(msg))
-
-  //     active = undefined
-  // }
-
-  return active;
+  return config().get('active');
 }
 
 export function setActive(name) {
-  const conf = config();
-  conf.set('active', name);
+  config().set('active', name);
 }
 
 // tug active

@@ -11,8 +11,7 @@ export default function (options) {
   fs.readdir(target, (err, items) => {
     for (let i = 0; i < items.length; i += 1) {
       const name = items[i];
-      // if (name.endsWith('.yml')) console.log(name);
-      console.log(name);
+      if (name.endsWith('.yml')) console.log(name);
     }
   });
 }
