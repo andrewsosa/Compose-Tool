@@ -1,31 +1,43 @@
-import path from 'path'
-import nconf from 'nconf'
+import path from 'path';
+import nconf from 'nconf';
 
-const config = {}
+import { exists } from './fs';
 
-// Use default nconf version
-config.get = function (key) {
-    return nconf.get(key)
-}
+// Config keys
+export const keys = {
+  active: 'active',
+  dir: 'directory',
+};
 
-// Also save after setting
-config.set = function (key, value) {
-    nconf.set(key, value)
-    nconf.save((err => {
-        if (err) console.log(err)
-    }))
-}
+// Default values
+export const defaults = {
+  DEFAULT_DIR: '.docker',
+  DEFAULT_CONF_DIR: process.cwd(),
+  CONFIG_FILE_NAME: 'docker-compose.yml',
+};
 
-config.unset = function(key) {
-    config.set(key, undefined)
-}
+export const COMPOSE_FILENAME = defaults.CONFIG_FILE_NAME;
 
-//
+// Configuration API
 export default function (dir) {
-    let cwd = process.cwd()
-    let confPath = path.join(cwd, dir, '.tugrc')
+  const confDir = dir || defaults.DEFAULT_CONF_DIR;
+  const confPath = path.join(confDir, '.tugrc.json');
 
-    nconf.file({file: confPath})
+  nconf.file({ file: confPath });
 
-    return config
+  return {
+    get(key) {
+      return nconf.get(key);
+    },
+    set(key, value) {
+      nconf.set(key, value);
+      nconf.save();
+    },
+    unset(key) {
+      this.set(key, undefined);
+    },
+    exists() {
+      return exists(confPath);
+    },
+  };
 }

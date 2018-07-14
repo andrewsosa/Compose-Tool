@@ -1,35 +1,9 @@
 module.exports = {
-    "env": {
-        "es6": true,
-        "node": true
-    },
-    "extends": "eslint:recommended",
-    "parserOptions": {
-        "sourceType": "module"
-    },
+    "extends": "airbnb-base",
+
     "rules": {
-        "indent": [
-            "error",
-            4
-        ],
-        "linebreak-style": [
-            "error",
-            "unix"
-        ],
-        "quotes": [
-            "warn",
-            "single",
-            { "allowTemplateLiterals": true }
-        ],
-        "semi": [
-            "error",
-            "never"
-        ],
-        "no-console": [
-            "off"
-        ],
-        "no-unused-vars": [
-            "warn"
-        ]
+        // CLI needs console.log for output!
+        "no-console": 0,
+        "brace-style": 0
     }
 };

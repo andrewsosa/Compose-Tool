@@ -1,6 +1,7 @@
-/node_modules
-/dist
-/.vscode
+node_modules/
+dist/
+.vscode
 
-/docker-compose.yml
-/.docker
+docker-compose.yml
+.docker
+.tugrc.json
