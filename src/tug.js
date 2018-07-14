@@ -4,14 +4,14 @@ import app from 'commander';
 
 import active from './commands/active';
 import checkout from './commands/checkout';
-import create from './commands/create';
+// import create from './commands/create';
 import init from './commands/init';
 import list from './commands/list';
 import save from './commands/save';
 
 app.version('0.1.0')
-  .description('Docker Compose configuration management tool')
-  // .option('-d, --dir <path>', 'Specify an alternate config directory (default: .docker)');
+  .description('Docker Compose configuration management tool');
+//  .option('-d, --dir <path>', 'Specify an alternate config directory (default: .docker)');
 
 app.command('init')
   .description('Initialize Tug')

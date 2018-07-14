@@ -1,6 +1,5 @@
 import inquirer from 'inquirer';
 
-import _fs from '../util/fs';
 import config, { keys, defaults, COMPOSE_FILENAME } from '../util/config';
 import { mkdir, exists } from '../util/fs';
 import { warn } from '../util/log';
@@ -32,13 +31,10 @@ export default async function init(options) {
   // Collect init config
   const conf = await inquirer.prompt(INIT_QUESTIONS);
 
+  config().set(keys.dir, conf.directory);
+  config().set(keys.active, conf.active);
+
   // Create the directory and save init active
   mkdir(conf.directory);
   save(conf.active);
-
-  // TODO: Copy in the initial config
-  // TODO: introduce actions module
-
-  config().set(keys.dir, conf.directory);
-  config().set(keys.active, conf.active);
 }

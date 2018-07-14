@@ -6,14 +6,14 @@ import { exists } from './fs';
 // Config keys
 export const keys = {
   active: 'active',
-  dir: 'directory'
-}
+  dir: 'directory',
+};
 
 // Default values
 export const defaults = {
   DEFAULT_DIR: '.docker',
   DEFAULT_CONF_DIR: process.cwd(),
-  CONFIG_FILE_NAME: 'docker-compose.yml'
+  CONFIG_FILE_NAME: 'docker-compose.yml',
 };
 
 export const COMPOSE_FILENAME = defaults.CONFIG_FILE_NAME;
@@ -38,6 +38,6 @@ export default function (dir) {
     },
     exists() {
       return exists(confPath);
-    }
+    },
   };
 }
