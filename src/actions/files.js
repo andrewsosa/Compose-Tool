@@ -9,7 +9,12 @@ export function save(dest, options) {
   const dir = config().get(keys.dir);
 
   const sourcePath = path.join(cwd, COMPOSE_FILENAME);
-  const destPath = path.join(cwd, dir, dest);
+  let destPath = path.join(cwd, dir, dest);
+
+  // Make sure we have our file ending
+  if (!destPath.endsWith('.yml')) {
+    destPath += '.yml';
+  }
 
   copy(sourcePath, destPath, options);
 }
