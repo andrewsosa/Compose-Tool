@@ -1,4 +1,4 @@
-# Tug (`compose-tugboat`)
+# Tug
 > A tugboat for managing your `docker-compose.yml` files.
 
 ## Built With
