@@ -25,7 +25,7 @@ app.command('active')
 
 app.command('checkout <name>')
   .description('Switch to a different Compose configuration')
-  .option('-b, --branch <name>', 'Start a new config based on the active config')
+  .option('-b, --branch', 'Start a new config based on the active config')
   .option('-f, --force', 'Force overwrite of current docker-compose.yml')
   .option('-w, --write-back', 'Write active configuration back to config storage')
   .action(checkout);

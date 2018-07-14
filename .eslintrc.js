@@ -3,6 +3,7 @@ module.exports = {
 
     "rules": {
         // CLI needs console.log for output!
-        "no-console": 0
+        "no-console": 0,
+        "brace-style": 0
     }
 };

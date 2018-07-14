@@ -1,7 +1,7 @@
 import config from '../util/config';
 import { warn } from '../util/log';
 
-export function getActiveConf() {
+export function getActive() {
   const conf = config();
   const active = conf.get('active');
   // let file = path.join(process.cwd(), dir, active)
@@ -18,17 +18,17 @@ export function getActiveConf() {
   return active;
 }
 
-export function setActiveConf(name) {
+export function setActive(name) {
   const conf = config();
   conf.set('active', name);
 }
 
 // tug active
 export default function (options) {
-  const active = getActiveConf();
+  const active = getActive();
 
   if (options.unset !== undefined) {
-    setActiveConf(undefined);
+    setActive(undefined);
     return;
   }
 
