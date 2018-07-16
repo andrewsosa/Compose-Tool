@@ -11,6 +11,10 @@ import save from './commands/save';
 app.version('0.1.0')
   .description('Docker Compose configuration management tool');
 
+app.on('command:*', () => {
+  app.outputHelp();
+})
+
 app.command('init')
   .description('Initialize Tug')
   .option('-f, --force', 'Force reinitialization')
@@ -28,7 +32,8 @@ app.command('checkout <name>')
   .option('-w, --write-back', 'Write active configuration back to config storage')
   .action(checkout);
 
-app.command('ls')
+app.command('list')
+  .alias('ls')
   .description('List available Compose configurations')
   .action(list);
 
