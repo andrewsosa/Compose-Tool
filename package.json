@@ -1,9 +1,9 @@
 {
   "name": "compose-tugboat",
-  "version": "0.2.0",
+  "version": "2.0.0",
   "description": "A tugboat for managing your `docker-compose.yml` files.",
   "main": "dist/tug.js",
-  "repository": "git@github.com:andrewsosa/Compose-Tool.git",
+  "repository": "git@github.com:andrewsosa/compose-tugboat.git",
   "author": "Andrew Sosa <andrewsosa001@gmail.com>",
   "scripts": {
     "dev": "nodemon -x 'yarn build' -w src",
