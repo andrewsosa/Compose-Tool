@@ -1,6 +1,6 @@
 {
   "name": "compose-tugboat",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "A tugboat for managing your `docker-compose.yml` files.",
   "main": "dist/tug.js",
   "repository": "git@github.com:andrewsosa/compose-tugboat.git",
